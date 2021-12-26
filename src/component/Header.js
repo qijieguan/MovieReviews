@@ -5,15 +5,16 @@ export default function Header () {
         <header className="header">
             <div style={{display: 'inline-block', width: '30%'}}/>
             <div className="header-logo">MovieReviews</div>
-            <div className="header-search" style={{display: 'inline-flex', width: '30%'}}>
+            <form id="header-search" style={{display: 'inline-flex', width: '30%'}}>
                 <input
+                    id = "search-input"
                     placeholder='Search movie title...'
                     style={inputStyle}
                 />
                 <div className='search-icon'>
                     <BsSearch color='grey'/>
                 </div>
-            </div>
+            </form>
         </header>
     );
 }
