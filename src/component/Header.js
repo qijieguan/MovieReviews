@@ -7,7 +7,7 @@ export default function Header () {
             <div className="header-logo">MovieReviews</div>
             <div className="header-search" style={{display: 'inline-flex', width: '30%'}}>
                 <input
-                    placeholder='Search movie title'
+                    placeholder='Search movie title...'
                     style={inputStyle}
                 />
                 <div className='search-icon'>
