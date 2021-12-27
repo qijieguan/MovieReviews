@@ -23,7 +23,12 @@ export default function Home() {
     useEffect(() => {getMovies(URL);},[URL]);
 
     const getMovies = (url) => {
-        fetch(url).then(res => res.json()).then((data) => {
+        fetch(url, {headers : { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }}
+        ).then(res => res.json()).then((data) => {
+        //axios.get(url).then((response) => {
             console.log(data.results);
             //console.log(response.data.results);
             if (!prevData.length) {
