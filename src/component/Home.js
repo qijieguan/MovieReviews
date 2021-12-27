@@ -1,5 +1,4 @@
 import { useState, useEffect} from 'react';
-import uuid from 'react-uuid';
 import Movie from './Movie.js';
 
 const apiURL = process.env.REACT_APP_BASE_URL + process.env.REACT_APP_API_URL + process.env.REACT_APP_API_KEY;
@@ -40,7 +39,7 @@ export default function Home() {
     return(
         <div className="movie-container">
             {data ?
-                data.map(movie => <Movie key={uuid()} movie={movie}/>)
+                data.map(movie => <Movie key={movie.id} movie={movie}/>)
                 : ""
             }
         </div>
