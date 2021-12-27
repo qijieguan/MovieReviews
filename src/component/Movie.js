@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { setSave } from './actions/index.js';
+import { setSave, setDelete } from './actions/index.js';
 import { useState, useEffect } from 'react';
 
 
@@ -7,8 +7,6 @@ const Movie = (movie) => {
 
     const savedMovies = useSelector(state => state.saveList)
     const dispatch = useDispatch();
-
-    const [color, setColor] = useState({color: "rgb(211, 0, 0)"});
 
 
     useEffect(() => {
@@ -19,7 +17,6 @@ const Movie = (movie) => {
                 let x = document.getElementById(element.id).firstChild;
                 x.style.backgroundColor = 'limegreen';
                 x.innerHTML = "Saved";
-                return;
             }
         });
     }, [savedMovies, movie.movie.id])
@@ -38,17 +35,23 @@ const Movie = (movie) => {
 
     const handleSave = () => {
         let x = document.getElementById(id).firstChild;
-        if (x.innerHTML === "Saved") {return}
-        dispatch(setSave(movie.movie));
-        setColor({color: 'limegreen'});
-        x.innerHTML = "Saved";
+        if (x.innerHTML === "Save") {
+            dispatch(setSave(movie.movie));
+            x.style.backgroundColor = "limegreen";
+            x.innerHTML = "Saved";
+        }
+        else {
+            dispatch(setDelete(movie.movie));
+            x.style.backgroundColor = 'rgb(211, 0, 0)';
+            x.innerHTML = "Save";
+        }
     }
 
     const {title, poster_path, vote_average, overview, id} = movie.movie;
 
     return (
         <div className="movie" id={id}>
-            <div onClick={handleSave} className='save-btn' style={{backgroundColor: color.color}}>Save</div>
+            <div onClick={handleSave} className='save-btn'>Save</div>
             
             <img src={process.env.REACT_APP_IMG_URL + poster_path} alt="" className="movie-img"></img>
             <div className="movie-info">

@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 
 
 const allReducers = combineReducers({
-    saveList: saveReducer
+    saveList: saveReducer,
 }); 
 
 export default allReducers;

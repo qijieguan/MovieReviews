@@ -4,3 +4,10 @@ export const setSave = save => {
         payload: save
     }
 }
+
+export const setDelete = del => {
+    return {
+        type: 'SET_DELETE',
+        payload: del
+    }
+}
