@@ -52,7 +52,6 @@ const Movie = (movie) => {
     return (
         <div className="movie" id={id}>
             <div onClick={handleSave} className='save-btn'>Save</div>
-            
             <img src={process.env.REACT_APP_IMG_URL + poster_path} alt="" className="movie-img"></img>
             <div className="movie-info">
                 <span className="movie-title">{title}</span>
