@@ -1,8 +1,10 @@
 import { useState, useEffect} from 'react';
 import Movie from './Movie.js';
 
+
 const apiURL = process.env.REACT_APP_BASE_URL + process.env.REACT_APP_API_URL + process.env.REACT_APP_API_KEY;
 const searchURL = process.env.REACT_APP_BASE_URL + '/search/movie?' + process.env.REACT_APP_API_KEY;
+
 
 export default function Home() {
 
@@ -11,10 +13,9 @@ export default function Home() {
 
     const [URL, setURL] = useState(apiURL);
     const [data, setData] = useState([]);
-    
-    useEffect(() => {
-        getMovies(URL);
-    },[URL]);
+
+
+    useEffect(() => {getMovies(URL);},[URL]);
 
     const getMovies = (url) => {
         fetch(url).then(res => res.json().then(data => {
@@ -22,6 +23,7 @@ export default function Home() {
             setData(data.results);
         }));
     }
+    
     if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();

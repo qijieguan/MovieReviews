@@ -1,17 +1,28 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { setSave } from './actions/index.js';
-
 import { useState, useEffect } from 'react';
+
 
 const Movie = (movie) => {
 
-    const saveMovies = useSelector(state => state.saveList);
+    const savedMovies = useSelector(state => state.saveList)
     const dispatch = useDispatch();
 
     const [color, setColor] = useState({color: "rgb(211, 0, 0)"});
 
-    useEffect(() => {//console.log(saveMovies);
-    }, [saveMovies]);
+
+    useEffect(() => {
+        //Persist saved status when loading movies from API
+        if (!savedMovies.length) {return}
+        savedMovies.forEach(element => {
+            if (element.id === movie.movie.id) {
+                let x = document.getElementById(element.id).firstChild;
+                x.style.backgroundColor = 'limegreen';
+                x.innerHTML = "Saved";
+                return;
+            }
+        });
+    }, [savedMovies, movie.movie.id])
 
     const getColor = (vote) => {
         if (vote < 6.4) {
@@ -38,6 +49,7 @@ const Movie = (movie) => {
     return (
         <div className="movie" id={id}>
             <div onClick={handleSave} className='save-btn' style={{backgroundColor: color.color}}>Save</div>
+            
             <img src={process.env.REACT_APP_IMG_URL + poster_path} alt="" className="movie-img"></img>
             <div className="movie-info">
                 <span className="movie-title">{title}</span>

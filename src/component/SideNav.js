@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 export default function SideBar() {
 
-    const saveMovies = useSelector(state => state.saveList); 
+    const savedMovies = useSelector(state => state.saveList); 
 
     return (
         <nav className='side-bar'>
@@ -16,15 +16,15 @@ export default function SideBar() {
                 <div className="dot-icon" color='red' size={20} 
                     style={{
                         position: 'absolute',
-                        display: saveMovies.length > 0 ? '' : 'none',
-                        right: '21%',
+                        display: savedMovies.length > 0 ? '' : 'none',
+                        right: savedMovies.length < 10 ? '20%' : '16%',
                         top: '32%',
-                        padding: '2px 5px',
+                        padding: '2px 5px 2px 3px',
                         color: 'white',
                         backgroundColor: 'red',
                         borderRadius: '10px'
                     }}
-                >{saveMovies.length}</div>
+                >{savedMovies.length}</div>
             </div>     
         </nav>
     );
