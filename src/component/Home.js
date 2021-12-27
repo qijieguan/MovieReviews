@@ -23,12 +23,9 @@ export default function Home() {
     useEffect(() => {getMovies(URL);},[URL]);
 
     const getMovies = (url) => {
-        fetch(url, {headers : { 
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        }}
+        fetch(url, 
         //res.json() <=> res.text()
-        ).then(res => res.text()).then((data) => {
+        ).then(res => res.json()).then((data) => {
         //axios.get(url).then((response) => {
             console.log(data.results);
             //console.log(response.data.results);
