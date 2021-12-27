@@ -1,17 +1,19 @@
-import { Link } from 'react-router-dom';
 import { AiOutlineHome, AiOutlineSave } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 export default function SideBar() {
 
     const savedMovies = useSelector(state => state.saveList); 
 
+    useEffect(() => {}, [savedMovies]);
+
     return (
         <nav className='side-bar'>
-            <Link to='/' className='home' style={Object.assign({borderRadius: '20px 0 0 0'}, boxStyle)}>
+            <div id='home' style={Object.assign({borderRadius: '20px 0 0 0'}, boxStyle)}>
                 <AiOutlineHome color='white' size={24}/>
-            </Link>
-            <div className='save' style={Object.assign({borderRadius: '0 0 0 20px'}, boxStyle)}>
+            </div>
+            <div id='save' style={Object.assign({borderRadius: '0 0 0 20px'}, boxStyle)}>
                 <AiOutlineSave color='white' size={24}/>
                 <div className="dot-icon" color='red' size={20} 
                     style={{

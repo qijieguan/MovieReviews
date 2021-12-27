@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import { useState, useEffect} from 'react';
 import Movie from './Movie.js';
 
@@ -10,16 +11,23 @@ export default function Home() {
 
     const form = document.getElementById('header-search');
     const search = document.getElementById('search-input');
+    const home = document.getElementById("home");
+    const save = document.getElementById("save");
+
+    const savedMovies = useSelector(state => state.saveList);
 
     const [URL, setURL] = useState(apiURL);
     const [data, setData] = useState([]);
-
+    const [prevData, setPrev] = useState([]);
 
     useEffect(() => {getMovies(URL);},[URL]);
 
     const getMovies = (url) => {
         fetch(url).then(res => res.json().then(data => {
             //console.log(data.results);
+            if (!prevData.length) {
+                setPrev(data.results);
+            }
             setData(data.results);
         }));
     }
@@ -35,6 +43,20 @@ export default function Home() {
             else {
                 setURL(apiURL);
             }
+        });    
+    }
+
+    if (home) {
+        home.addEventListener('click', (e) => {
+            e.preventDefault();
+            setData(prevData);
+        });    
+    }
+
+    if (save) {
+        save.addEventListener('click', (e) => {
+            e.preventDefault();
+            setData(savedMovies);
         });    
     }
 
