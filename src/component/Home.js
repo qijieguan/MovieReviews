@@ -4,7 +4,7 @@ import Movie from './Movie.js';
 import axios from 'axios';
 
 const apiURL = process.env.REACT_APP_BASE_URL + process.env.REACT_APP_API_URL + process.env.REACT_APP_API_KEY;
-const searchURL = process.env.REACT_APP_BASE_URL + '/search/movie?' + process.env.REACT_APP_API_KEY;
+const searchURL = process.env.REACT_APP_BASE_URL + 'search/movie?' + process.env.REACT_APP_API_KEY;
 
 
 export default function Home() {
