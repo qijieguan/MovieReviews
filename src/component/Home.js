@@ -24,7 +24,7 @@ export default function Home() {
 
     const getMovies = (url) => {
         axios(url).then((response) => {
-            //console.log(response.data.results);
+            console.log(response.data.results);
             //console.log(data.results);
             if (!prevData.length) {
                 setPrev(response.data.results);
