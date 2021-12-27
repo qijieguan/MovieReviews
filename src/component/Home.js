@@ -23,13 +23,13 @@ export default function Home() {
     useEffect(() => {getMovies(URL);},[URL]);
 
     const getMovies = (url) => {
-        axios(url).then((response) => {
-            console.log(response.data.results);
-            //console.log(data.results);
+        fetch(url).then(res => res.json()).then((data) => {
+            console.log(data.results);
+            //console.log(response.data.results);
             if (!prevData.length) {
-                setPrev(response.data.results);
+                setPrev(data.results);
             }
-            setData(response.data.results);
+            setData(data.results);
         });
     }
     
