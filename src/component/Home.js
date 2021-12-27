@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { useState, useEffect} from 'react';
 import Movie from './Movie.js';
-
+import axios from 'axios';
 
 const apiURL = process.env.REACT_APP_BASE_URL + process.env.REACT_APP_API_URL + process.env.REACT_APP_API_KEY;
 const searchURL = process.env.REACT_APP_BASE_URL + '/search/movie?' + process.env.REACT_APP_API_KEY;
@@ -23,13 +23,14 @@ export default function Home() {
     useEffect(() => {getMovies(URL);},[URL]);
 
     const getMovies = (url) => {
-        fetch(url).then(res => res.json().then(data => {
+        axios(url).then((response) => {
+            //console.log(response.data);
             //console.log(data.results);
             if (!prevData.length) {
-                setPrev(data.results);
+                setPrev(response.data.results);
             }
-            setData(data.results);
-        }));
+            setData(response.data.results);
+        });
     }
     
     if (form) {

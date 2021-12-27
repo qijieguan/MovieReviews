@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { setSave, setDelete } from './actions/index.js';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 
 const Movie = (movie) => {
