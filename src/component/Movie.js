@@ -8,7 +8,7 @@ const Movie = (movie) => {
     const savedMovies = useSelector(state => state.saveList)
     const dispatch = useDispatch();
 
-
+    
     useEffect(() => {
         //Persist saved status when loading movies from API
         if (!savedMovies.length) {return}
@@ -17,21 +17,11 @@ const Movie = (movie) => {
                 let x = document.getElementById(element.id).firstChild;
                 x.style.backgroundColor = 'limegreen';
                 x.innerHTML = "Saved";
+                return;
             }
         });
     }, [savedMovies, movie.movie.id])
 
-    const getColor = (vote) => {
-        if (vote < 6.4) {
-            return 'red';
-        }
-        else if (vote < 8) {
-            return 'orange';
-        }
-        else {
-            return 'limegreen';
-        }
-    }
 
     const handleSave = () => {
         let x = document.getElementById(id).firstChild;
@@ -47,12 +37,26 @@ const Movie = (movie) => {
         }
     }
 
+    const getColor = (vote) => {
+        if (vote < 6.4) {
+            return 'red';
+        }
+        else if (vote < 8) {
+            return 'orange';
+        }
+        else {
+            return 'limegreen';
+        }
+    }
+
     const {title, poster_path, vote_average, overview, id} = movie.movie;
+    const placeholder_img = "http://via.placeholder.com/1080x1580";
 
     return (
         <div className="movie" id={id}>
             <div onClick={handleSave} className='save-btn'>Save</div>
-            <img src={process.env.REACT_APP_IMG_URL + poster_path} alt="" className="movie-img"></img>
+            <img src={poster_path ? process.env.REACT_APP_IMG_URL + poster_path : placeholder_img} 
+                alt="" className="movie-img"></img>
             <div className="movie-info">
                 <span className="movie-title">{title}</span>
                 <div className="movie-vote" style={{color: getColor(vote_average)}}>{vote_average}</div>

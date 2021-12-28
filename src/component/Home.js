@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { useState, useEffect} from 'react';
 import Movie from './Movie.js';
-import axios from 'axios';
+import Tag from './Tag.js';
 
 const apiURL = process.env.REACT_APP_BASE_URL + process.env.REACT_APP_API_URL + process.env.REACT_APP_API_KEY;
 const searchURL = process.env.REACT_APP_BASE_URL + '/search/movie?' + process.env.REACT_APP_API_KEY;
@@ -26,9 +26,6 @@ export default function Home() {
         fetch(url, 
         //res.json() <=> res.text()
         ).then(res => res.json()).then((data) => {
-        //axios.get(url).then((response) => {
-            console.log(data.results);
-            //console.log(response.data.results);
             if (!prevData.length) {
                 setPrev(data.results);
             }
@@ -64,12 +61,37 @@ export default function Home() {
         });    
     }
 
+    const toggleTag = (id) => {
+        document.getElementById(id).style.backgroundColor = "blue";
+        let results = [];
+        data.forEach(movie => { 
+            movie.genre_ids.forEach(genre_id => {
+                if (genre_id === id) {
+                    results = [...results, movie];
+                }
+            });
+        });
+        setData(results);
+    }
+
+    const resetTag = () => {
+        let result = document.querySelectorAll(".tag");
+        result.forEach(tag => {
+            tag.style.backgroundColor = "orange";
+        });
+        setData(prevData);
+    }
+
     return(
-        <div className="movie-container">
-            {data ?
-                data.map(movie => <Movie key={movie.id} movie={movie}/>)
-                : ""
-            }
+        <div>
+            <Tag toggleTag={toggleTag} resetTag={resetTag}/>
+            <div className="movie-container">
+                {data.length > 0 ?
+                    data.map(movie => <Movie key={movie.id} movie={movie}/>)
+                    : 
+                    <h1 className='no-results'>No results found</h1>
+                }
+            </div>
         </div>
     );
 }
