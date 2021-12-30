@@ -50,14 +50,18 @@ export default function Home() {
     if (home) {
         home.addEventListener('click', (e) => {
             e.preventDefault();
+
             setData(prevData);
+            document.documentElement.scrollTop = 0;
         });    
     }
 
     if (save) {
         save.addEventListener('click', (e) => {
             e.preventDefault();
+
             setData(savedMovies);
+            document.documentElement.scrollTop = 0;
         });    
     }
 
@@ -86,7 +90,7 @@ export default function Home() {
         <div>
             <Tag toggleTag={toggleTag} resetTag={resetTag}/>
             <div className="movie-container">
-                {data.length > 0 ?
+                {data.length > 0?
                     data.map(movie => <Movie key={movie.id} movie={movie}/>)
                     : 
                     <h1 className='no-results'>No results found</h1>
