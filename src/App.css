@@ -19,6 +19,7 @@
   line-height: 60px;
   background-color: navy;
   box-shadow: 1px 1px 1px;
+  animation: header-load 500ms;
 }
 
 .header-logo {
@@ -76,6 +77,7 @@
   width: 65px;
   box-shadow: -1px 1px 1px;
   border-radius: 20px 0 0 20px;
+  animation: side-load 500ms;
 }
 
 #home:hover, #save:hover {
@@ -190,4 +192,22 @@ input, textarea {
   height: 40px;
   width: 80%;
   outline: none;
+}
+
+@keyframes side-load {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes header-load {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
 }
