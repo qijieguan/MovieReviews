@@ -15,13 +15,14 @@ export default function SideBar() {
             </div>
             <div id='save' style={Object.assign({borderRadius: '0 0 0 20px'}, boxStyle)}>
                 <AiOutlineSave color='white' size={24}/>
-                <div className="dot-icon" color='red' size={20} 
+                <div className="dot-icon"
                     style={{
                         position: 'absolute',
                         display: savedMovies.length > 0 ? '' : 'none',
-                        right: savedMovies.length < 10 ? '20%' : '16%',
+                        right: savedMovies.length < 10 ? '20%' : '18%',
                         top: '32%',
-                        padding: '2px 5px 2px 3px',
+                        textAlign: 'center',
+                        minWidth: '18px',
                         color: 'white',
                         backgroundColor: 'red',
                         borderRadius: '10px'

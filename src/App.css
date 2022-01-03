@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
 * {
   font-size: 14px;
   font-family: 'Poppins', sans-serif;
@@ -25,7 +27,7 @@
 .header-logo {
   display: inline-block;
   font-size: 30px;
-  font-family: fantasy;
+  font-weight: bold;
   letter-spacing: 2px;
   text-align: center;
   text-shadow: 2px 2px gray;
@@ -53,7 +55,6 @@
   display: inline-block;
   margin: 10px 10px 0 0;
   padding: 12px 24px;
-  font-size: 16px;
   font-weight: bold;
   color: white;
   background-color: orange;
@@ -108,7 +109,7 @@
   top: 10px;
   left: 8px;
   padding: 5px 10px 5px 8px;
-  font-weight: bolder;
+  font-weight: bold;
   color: white;
   background-color: rgb(211, 0, 0);
   border-radius: 30px;
@@ -143,13 +144,11 @@
 
 .movie-title {
   font-size: 16px;
-  font-weight: bold;
-  width: 65%;
+  width: 70%;
 }
 
 .movie-vote {
   padding: 10px;
-  font-size: 16px;
   font-weight: bold;
   color: orange;
   background-color: navy;
