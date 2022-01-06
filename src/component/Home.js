@@ -52,7 +52,7 @@ export default function Home() {
             e.preventDefault();
 
             setData(prevData);
-            document.documentElement.scrollTop = 0;
+            window.scrollTo({top: 0, behavior: 'smooth'});
         });    
     }
 
@@ -61,7 +61,7 @@ export default function Home() {
             e.preventDefault();
 
             setData(savedMovies);
-            document.documentElement.scrollTop = 0;
+            window.scrollTo({top: 0, behavior: 'smooth'});
         });    
     }
 
